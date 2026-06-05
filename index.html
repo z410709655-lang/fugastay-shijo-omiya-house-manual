@@ -703,18 +703,35 @@
 
       .image-row img,
       .wide-image img {
-        min-height: 190px;
-        max-height: none;
-        box-shadow: 0 14px 34px rgba(17, 17, 17, 0.12);
+        width: 100%;
+        min-height: 0;
+        height: 132px;
+        max-height: 132px;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        box-shadow: none;
       }
 
       .wide-image img {
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 16 / 9;
       }
 
       .section .image-row,
       .section .wide-image {
-        display: none;
+        display: grid;
+        gap: 8px;
+        margin-top: 2px;
+      }
+
+      .section .image-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section .wide-image img {
+        height: 154px;
+        max-height: 154px;
       }
 
       .footer {
