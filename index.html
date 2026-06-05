@@ -1,0 +1,1633 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FUGA STAY Shijo Omiya | House Manual</title>
+  <link rel="icon" href="data:,">
+  <style>
+    :root {
+      --ink: #151515;
+      --soft-ink: #343434;
+      --muted: #77716a;
+      --paper: #f6f3ed;
+      --white: #ffffff;
+      --line: #d8d1c5;
+      --line-dark: rgba(255, 255, 255, 0.38);
+      --accent: #927244;
+      --shadow: 0 20px 50px rgba(17, 17, 17, 0.12);
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      line-height: 1.78;
+      letter-spacing: 0;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .hero {
+      min-height: 86vh;
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      align-items: stretch;
+      color: var(--white);
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.42) 44%, rgba(0, 0, 0, 0.13)),
+        url("assets/images/hero-night-exterior.jpg") center / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 35%;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.55), transparent);
+      z-index: -1;
+    }
+
+    .topbar {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 26px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .logo-mark {
+      width: clamp(148px, 18vw, 225px);
+      padding: 12px 15px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 2px;
+    }
+
+    .language-switcher {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .lang-button {
+      min-width: 54px;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      color: var(--white);
+      background: rgba(0, 0, 0, 0.12);
+      padding: 7px 10px;
+      border-radius: 2px;
+      cursor: pointer;
+      font-size: 12px;
+      line-height: 1;
+      transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+    }
+
+    .lang-button:hover,
+    .lang-button.is-active {
+      background: var(--white);
+      color: var(--ink);
+      border-color: var(--white);
+    }
+
+    .hero-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      align-content: end;
+      padding: 8vh 0 5vh;
+    }
+
+    .kicker {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin: 0 0 18px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 1080px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(40px, 6.4vw, 82px);
+      line-height: 0.98;
+      font-weight: 400;
+      letter-spacing: 0;
+      word-break: keep-all;
+      overflow-wrap: normal;
+    }
+
+    .hero-subtitle {
+      max-width: 700px;
+      margin: 24px 0 0;
+      font-size: clamp(17px, 2vw, 23px);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero-note {
+      max-width: 650px;
+      margin: 12px 0 0;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 14px;
+    }
+
+    .quick-info {
+      margin-top: 52px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line-dark);
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+    .quick-item {
+      min-height: 96px;
+      padding: 20px 24px;
+      border-right: 1px solid var(--line-dark);
+    }
+
+    .quick-item:last-child {
+      border-right: 0;
+    }
+
+    .quick-label {
+      display: block;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .quick-value {
+      display: block;
+      margin-top: 8px;
+      font-size: clamp(18px, 2.4vw, 27px);
+      line-height: 1.25;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .main-shell {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 84px 0 110px;
+      display: grid;
+      grid-template-columns: 245px minmax(0, 1fr);
+      gap: clamp(36px, 7vw, 86px);
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 24px;
+      border-top: 1px solid var(--ink);
+      padding-top: 18px;
+    }
+
+    .toc-title {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.35;
+      transition: color 160ms ease;
+    }
+
+    .toc a.is-active,
+    .toc a:hover {
+      color: var(--ink);
+    }
+
+    .toc-index {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--accent);
+      font-size: 16px;
+    }
+
+    .content {
+      display: grid;
+      gap: 28px;
+    }
+
+    .section {
+      padding: clamp(30px, 5vw, 56px) 0;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 28px;
+    }
+
+    .section:first-child {
+      border-top-color: var(--ink);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+
+    .section-number {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--accent);
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(28px, 4vw, 45px);
+      line-height: 1.12;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .section-body {
+      margin-left: 96px;
+      display: grid;
+      gap: 22px;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 760px;
+      color: var(--soft-ink);
+      font-size: 17px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .info-card {
+      background: rgba(255, 255, 255, 0.66);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 20px;
+      min-height: 104px;
+    }
+
+    .info-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    .info-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .image-row {
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .image-row img,
+    .wide-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 230px;
+      max-height: 430px;
+      object-fit: cover;
+      border-radius: 4px;
+      box-shadow: var(--shadow);
+    }
+
+    .wide-image img {
+      aspect-ratio: 16 / 9;
+    }
+
+    .note {
+      margin: 0;
+      border-left: 2px solid var(--accent);
+      padding: 4px 0 4px 17px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .device-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    details {
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--accent);
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    details[open] summary {
+      border-bottom: 1px solid var(--line);
+    }
+
+    details[open] summary::after {
+      content: "-";
+    }
+
+    .device-content {
+      padding: 18px 20px 22px;
+      color: var(--soft-ink);
+    }
+
+    .device-content p {
+      margin: 0 0 12px;
+    }
+
+    .device-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .footer {
+      background: var(--ink);
+      color: var(--white);
+      padding: 46px 20px;
+      text-align: center;
+    }
+
+    .footer img {
+      width: 172px;
+      margin: 0 auto 18px;
+      padding: 12px 14px;
+      background: var(--white);
+      border-radius: 2px;
+    }
+
+    .footer p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        min-height: 820px;
+        background-position: 54% center;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .language-switcher {
+        justify-content: flex-start;
+      }
+
+      .quick-info {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .quick-item:nth-child(2) {
+        border-right: 0;
+      }
+
+      .quick-item:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--line-dark);
+      }
+
+      .main-shell {
+        grid-template-columns: 1fr;
+        padding-top: 48px;
+      }
+
+      .toc {
+        position: static;
+      }
+
+      .toc nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0 18px;
+      }
+
+      .section-body {
+        margin-left: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar,
+      .hero-inner,
+      .main-shell {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .hero {
+        min-height: 790px;
+      }
+
+      .logo-mark {
+        width: 152px;
+      }
+
+      .lang-button {
+        min-width: 47px;
+        padding: 7px 8px;
+      }
+
+      .quick-info {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-item {
+        min-height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--line-dark);
+        padding: 16px 0;
+      }
+
+      .quick-item:last-child {
+        border-bottom: 0;
+      }
+
+      .toc nav {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        grid-template-columns: 48px 1fr;
+        gap: 14px;
+      }
+
+      .section-number {
+        font-size: 27px;
+      }
+
+      .info-grid,
+      .image-row {
+        grid-template-columns: 1fr;
+      }
+
+      .image-row img,
+      .wide-image img {
+        min-height: 210px;
+        max-height: none;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        color: #111;
+      }
+
+      .hero,
+      .toc,
+      .image-row,
+      .wide-image,
+      .footer {
+        display: none !important;
+      }
+
+      .main-shell {
+        display: block;
+        width: 100%;
+        padding: 0;
+      }
+
+      .section {
+        break-inside: avoid;
+        padding: 18px 0;
+      }
+
+      .section-body {
+        margin-left: 0;
+      }
+
+      .info-card,
+      details {
+        background: #fff;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="topbar">
+      <img class="logo-mark" src="assets/images/header-logo.svg" alt="FUGA STAY Shijo Omiya logo">
+      <div class="language-switcher" aria-label="Language">
+        <button class="lang-button" type="button" data-lang="ja">日本語</button>
+        <button class="lang-button" type="button" data-lang="zh-CN">简体</button>
+        <button class="lang-button" type="button" data-lang="zh-TW">繁體</button>
+        <button class="lang-button" type="button" data-lang="en">EN</button>
+        <button class="lang-button" type="button" data-lang="ko">한국어</button>
+      </div>
+    </div>
+    <div class="hero-inner">
+      <p class="kicker" data-text="hero.kicker"></p>
+      <h1 data-text="hero.title"></h1>
+      <p class="hero-subtitle" data-text="hero.subtitle"></p>
+      <p class="hero-note" data-text="hero.note"></p>
+      <div class="quick-info" id="quick-info"></div>
+    </div>
+  </header>
+
+  <div class="main-shell">
+    <aside class="toc" aria-label="Contents">
+      <p class="toc-title" data-text="tocTitle"></p>
+      <nav id="toc"></nav>
+    </aside>
+
+    <main class="content" id="content"></main>
+  </div>
+
+  <footer class="footer">
+    <img src="assets/images/header-logo.svg" alt="FUGA STAY Shijo Omiya logo">
+    <p data-text="footer"></p>
+  </footer>
+
+  <script>
+    const fallbackLang = "ja";
+
+    const copy = {
+      "ja": {
+        pageTitle: "FUGA STAY 四条大宮 ご滞在案内",
+        tocTitle: "Contents",
+        hero: {
+          kicker: "House Manual",
+          title: "FUGA STAY 四条大宮",
+          subtitle: "京都・四条大宮でのご滞在案内",
+          note: "ご到着後、まずはこちらの基本情報をご確認ください。快適にお過ごしいただくための館内ルールと設備案内をまとめています。"
+        },
+        quick: [
+          ["Check-in", "15:00"],
+          ["Check-out", "11:00"],
+          ["Front", "075-841-4771"],
+          ["LINE", "@816hhjqx"]
+        ],
+        footer: "FUGA STAY 四条大宮 | Thank you for staying with us.",
+        sections: [
+          {
+            id: "welcome",
+            title: "Welcome",
+            label: "ご案内",
+            lead: "FUGA STAY 四条大宮へようこそ。滞在中に必要な基本情報をこちらにまとめています。",
+            cards: [
+              ["住所", "京都市下京区岩上通四条下る佐竹町396番地"],
+              ["最寄り", "大宮駅周辺。京都市内の観光や移動に便利な立地です。"]
+            ],
+            image: "wide",
+            images: ["assets/images/hero-lobby.jpg"]
+          },
+          {
+            id: "contact",
+            title: "Contact",
+            label: "お問い合わせ",
+            lead: "ご滞在中のご質問やお困りごとは、フロントまたはLINEまでご連絡ください。",
+            cards: [
+              ["電話", "075-841-4771"],
+              ["LINE", "@816hhjqx"],
+              ["お願い", "緊急時以外は、内容が確認しやすいLINEでのご連絡をおすすめします。"]
+            ]
+          },
+          {
+            id: "wifi",
+            title: "Wi-Fi",
+            label: "インターネット",
+            lead: "Wi-Fi情報は客室内のQRコードをご確認ください。SSIDとパスワードは客室により異なる場合があります。",
+            cards: [
+              ["接続方法", "客室内のWi-Fi QRコードを読み取り、画面の案内に従って接続してください。"],
+              ["接続できない場合", "端末のWi-Fiを一度OFF/ONにしてから再接続してください。改善しない場合はフロントへご連絡ください。"]
+            ]
+          },
+          {
+            id: "checkout",
+            title: "Check-out",
+            label: "チェックアウト",
+            lead: "チェックアウトは11:00までです。鍵はフロントの返却ボックスへお戻しください。",
+            cards: [
+              ["時間", "11:00までにご退室をお願いいたします。"],
+              ["鍵の返却", "フロント設置の返却ボックスへお戻しください。"],
+              ["延長", "レイトチェックアウトは空室状況により、1時間2,000円で承ります。"],
+              ["鍵の紛失", "鍵を紛失された場合は3,000円を申し受けます。"]
+            ],
+            note: "延長をご希望の場合は、必ず事前にフロントへご相談ください。"
+          },
+          {
+            id: "facilities",
+            title: "Facilities",
+            label: "館内設備",
+            lead: "1階ロビーに電子レンジと製氷機がございます。共用設備のため、譲り合ってご利用ください。",
+            cards: [
+              ["1階ロビー", "電子レンジ、製氷機をご利用いただけます。"],
+              ["客室内", "電気ケトル、ドライヤー、ハンガーなどを備えています。"]
+            ],
+            image: "row",
+            images: ["assets/images/kettle-amenities.jpg", "assets/images/closet-hangers.jpg"]
+          },
+          {
+            id: "no-smoking",
+            title: "No Smoking",
+            label: "禁煙",
+            lead: "館内、客室、バルコニー、エントランス周辺は禁煙です。電子タバコもご遠慮ください。",
+            cards: [
+              ["禁煙エリア", "客室内、館内共用部、バルコニー、エントランス周辺。"],
+              ["特別清掃費", "喫煙が確認された場合、特別清掃費30,000円を申し受けます。"]
+            ],
+            image: "wide",
+            images: ["assets/images/brand-sign-night.jpg"]
+          },
+          {
+            id: "delivery-visitors",
+            title: "Food Delivery & Visitors",
+            label: "デリバリー・訪問者",
+            lead: "フードデリバリーはロビーまたはエントランスでお受け取りください。ご宿泊者以外の客室階への立ち入りはご遠慮ください。",
+            cards: [
+              ["デリバリー", "配達員との受け渡しはロビーまたはエントランスでお願いいたします。"],
+              ["訪問者", "防犯と他のお客様への配慮のため、ご宿泊者以外の入室はお控えください。"]
+            ]
+          },
+          {
+            id: "luggage",
+            title: "Luggage Storage",
+            label: "荷物預かり",
+            lead: "当日の荷物預かりは9:00以降に承ります。ご希望の場合はフロントへお声がけください。",
+            cards: [
+              ["受付開始", "9:00以降"],
+              ["ご注意", "貴重品、壊れやすい物、冷蔵・冷凍品はお預かりできません。"]
+            ]
+          },
+          {
+            id: "cleaning",
+            title: "Long-stay Cleaning",
+            label: "連泊清掃",
+            lead: "3泊以上のご滞在では、事前リクエストにより清掃を承ります。",
+            cards: [
+              ["対象", "3泊以上のご滞在"],
+              ["申込期限", "清掃希望日の前日20:00までにフロントまたはLINEへご連絡ください。"],
+              ["お願い", "清掃時間帯はスタッフが入室できる状態にしてください。"]
+            ]
+          },
+          {
+            id: "towels-trash",
+            title: "Towels, Amenities & Trash",
+            label: "タオル・アメニティ・ごみ",
+            lead: "タオル交換やごみ回収をご希望の場合は、11:00までに所定の方法でお出しください。",
+            cards: [
+              ["タオル交換", "交換カードと使用済みタオルを11:00までに客室ドア外へお出しください。"],
+              ["ごみ回収", "ごみは袋にまとめ、11:00までに客室ドア外へお出しください。"],
+              ["アメニティ", "追加が必要な場合はフロントまたはLINEへご相談ください。"]
+            ],
+            image: "row",
+            images: ["assets/images/bathroom.jpg", "assets/images/hair-dryer.jpg"]
+          },
+          {
+            id: "rental",
+            title: "Rental Items",
+            label: "貸出品",
+            lead: "貸出品は数に限りがあります。必要な場合はフロントまたはLINEへお問い合わせください。",
+            cards: [
+              ["受付", "フロントまたはLINEでご相談ください。"],
+              ["返却", "チェックアウト前にフロントへご返却ください。"]
+            ]
+          },
+          {
+            id: "devices",
+            title: "Devices",
+            label: "設備の使い方",
+            lead: "客室設備の基本的な使い方です。操作に迷った場合はフロントへご連絡ください。",
+            devices: [
+              ["Wi-Fi", "客室内のQRコードを読み取り、SSIDとパスワードをご確認ください。接続できない場合は端末のWi-Fiを再起動してください。"],
+              ["エアコン", "リモコンの電源を入れ、冷房・暖房・除湿を選択してください。外出時は節電にご協力ください。"],
+              ["テレビ", "リモコンで電源を入れてご利用ください。音量は近隣客室に配慮した大きさでお願いいたします。"],
+              ["浴室アメニティ", "備え付けのアメニティをご利用ください。追加が必要な場合はフロントまたはLINEへご連絡ください。"],
+              ["電子レンジ・製氷機", "1階ロビーにございます。長時間の占有は避け、清潔にご利用ください。"]
+            ],
+            image: "row",
+            images: ["assets/images/air-conditioner.jpg", "assets/images/standard-twin.jpg"]
+          },
+          {
+            id: "emergency",
+            title: "Emergency",
+            label: "緊急時",
+            lead: "火災、急病、事件など緊急の場合は、まず安全を確保し、公的緊急窓口へご連絡ください。",
+            cards: [
+              ["火災・救急", "119"],
+              ["警察", "110"],
+              ["ホテル", "075-841-4771 / LINE @816hhjqx"],
+              ["避難", "館内表示とスタッフの案内に従って、落ち着いて避難してください。"]
+            ]
+          }
+        ]
+      },
+      "zh-CN": {
+        pageTitle: "FUGA STAY 四条大宫 入住指南",
+        tocTitle: "目录",
+        hero: {
+          kicker: "House Manual",
+          title: "FUGA STAY 四条大宫",
+          subtitle: "京都四条大宫入住指南",
+          note: "抵达后请先确认本页基础信息。这里整理了入住期间常用的联系方式、设施说明与住宿规则。"
+        },
+        quick: [
+          ["入住", "15:00"],
+          ["退房", "11:00"],
+          ["前台", "075-841-4771"],
+          ["LINE", "@816hhjqx"]
+        ],
+        footer: "FUGA STAY 四条大宫 | 感谢您的入住。",
+        sections: [
+          {
+            id: "welcome",
+            title: "Welcome",
+            label: "欢迎",
+            lead: "欢迎入住 FUGA STAY 四条大宫。本页汇总了入住期间最常用的信息。",
+            cards: [
+              ["地址", "京都市下京区岩上通四条下る佐竹町396番地"],
+              ["交通", "位于大宫站周边，前往京都市内观光与移动都很方便。"]
+            ],
+            image: "wide",
+            images: ["assets/images/hero-lobby.jpg"]
+          },
+          {
+            id: "contact",
+            title: "Contact",
+            label: "联系",
+            lead: "入住期间如有问题，请联系前台或通过 LINE 留言。",
+            cards: [
+              ["电话", "075-841-4771"],
+              ["LINE", "@816hhjqx"],
+              ["建议", "非紧急事项建议使用 LINE，便于工作人员确认内容并回复。"]
+            ]
+          },
+          {
+            id: "wifi",
+            title: "Wi-Fi",
+            label: "网络",
+            lead: "Wi-Fi 信息请查看房内 QR 码。不同房间的 SSID 与密码可能不同。",
+            cards: [
+              ["连接方法", "扫描房内 Wi-Fi QR 码，并按画面提示连接。"],
+              ["无法连接时", "请先关闭并重新开启手机或电脑的 Wi-Fi，再尝试连接；仍无法使用请联系前台。"]
+            ]
+          },
+          {
+            id: "checkout",
+            title: "Check-out",
+            label: "退房",
+            lead: "退房时间为 11:00 前。钥匙请放回前台的钥匙回收箱。",
+            cards: [
+              ["时间", "请在 11:00 前离开房间。"],
+              ["钥匙归还", "请投入前台设置的钥匙回收箱。"],
+              ["延迟退房", "视当天房态而定，延迟退房为 2,000 日元 / 小时。"],
+              ["钥匙遗失", "钥匙遗失需收取 3,000 日元。"]
+            ],
+            note: "如需延迟退房，请务必提前联系前台确认。"
+          },
+          {
+            id: "facilities",
+            title: "Facilities",
+            label: "馆内设施",
+            lead: "1 楼大堂设有微波炉与制冰机。属于共用设施，请互相礼让使用。",
+            cards: [
+              ["1 楼大堂", "可使用微波炉与制冰机。"],
+              ["房内设备", "房内配有电热水壶、吹风机、衣架等。"]
+            ],
+            image: "row",
+            images: ["assets/images/kettle-amenities.jpg", "assets/images/closet-hangers.jpg"]
+          },
+          {
+            id: "no-smoking",
+            title: "No Smoking",
+            label: "禁烟",
+            lead: "全馆、客房、阳台、入口周边均禁止吸烟，电子烟也请勿使用。",
+            cards: [
+              ["禁烟区域", "客房内、公共区域、阳台、入口周边。"],
+              ["特别清扫费", "如确认有吸烟行为，将收取特别清扫费 30,000 日元。"]
+            ],
+            image: "wide",
+            images: ["assets/images/brand-sign-night.jpg"]
+          },
+          {
+            id: "delivery-visitors",
+            title: "Food Delivery & Visitors",
+            label: "外卖与访客",
+            lead: "外卖请在大堂或入口处领取。非入住客人请勿进入客房楼层。",
+            cards: [
+              ["外卖", "请在大堂或入口处与配送员交接。"],
+              ["访客", "出于安全和对其他住客的考虑，请勿让非入住客人进入客房。"]
+            ]
+          },
+          {
+            id: "luggage",
+            title: "Luggage Storage",
+            label: "行李寄存",
+            lead: "当天行李寄存从 9:00 后开始受理。如需寄存，请联系前台。",
+            cards: [
+              ["开始时间", "9:00 后"],
+              ["注意事项", "贵重物品、易碎物品、冷藏冷冻物品无法寄存。"]
+            ]
+          },
+          {
+            id: "cleaning",
+            title: "Long-stay Cleaning",
+            label: "连住清扫",
+            lead: "入住 3 晚以上时，可提前申请清扫服务。",
+            cards: [
+              ["对象", "入住 3 晚以上的客人"],
+              ["申请期限", "请在希望清扫日前一天 20:00 前联系前台或 LINE。"],
+              ["请配合", "清扫时间请保持房间可由工作人员进入的状态。"]
+            ]
+          },
+          {
+            id: "towels-trash",
+            title: "Towels, Amenities & Trash",
+            label: "毛巾、备品与垃圾",
+            lead: "如需更换毛巾或回收垃圾，请在 11:00 前按指定方式放在房门外。",
+            cards: [
+              ["毛巾更换", "请将更换卡和已使用毛巾在 11:00 前放在房门外。"],
+              ["垃圾回收", "请将垃圾装袋后在 11:00 前放在房门外。"],
+              ["备品追加", "如需追加备品，请联系前台或 LINE。"]
+            ],
+            image: "row",
+            images: ["assets/images/bathroom.jpg", "assets/images/hair-dryer.jpg"]
+          },
+          {
+            id: "rental",
+            title: "Rental Items",
+            label: "租借用品",
+            lead: "租借用品数量有限。如有需要，请联系前台或 LINE。",
+            cards: [
+              ["申请", "请通过前台或 LINE 咨询。"],
+              ["归还", "请在退房前归还至前台。"]
+            ]
+          },
+          {
+            id: "devices",
+            title: "Devices",
+            label: "设备使用",
+            lead: "以下为房内与馆内设备的基本使用方法。如不确定如何操作，请联系前台。",
+            devices: [
+              ["Wi-Fi", "请扫描房内 QR 码查看 SSID 与密码。无法连接时，请重启设备 Wi-Fi 后再试。"],
+              ["空调", "使用遥控器开机，并选择制冷、制热或除湿。外出时请协助节电。"],
+              ["电视", "使用遥控器开机。请将音量控制在不影响其他房间的范围内。"],
+              ["浴室备品", "请使用房内配备的浴室备品。如需追加，请联系前台或 LINE。"],
+              ["微波炉 / 制冰机", "位于 1 楼大堂。请避免长时间占用，并保持清洁。"]
+            ],
+            image: "row",
+            images: ["assets/images/air-conditioner.jpg", "assets/images/standard-twin.jpg"]
+          },
+          {
+            id: "emergency",
+            title: "Emergency",
+            label: "紧急情况",
+            lead: "发生火灾、急病、事件等紧急情况时，请先确保自身安全，并联系公共紧急电话。",
+            cards: [
+              ["火灾、急救", "119"],
+              ["警察", "110"],
+              ["酒店", "075-841-4771 / LINE @816hhjqx"],
+              ["避难", "请根据馆内标识和工作人员指引，冷静避难。"]
+            ]
+          }
+        ]
+      },
+      "zh-TW": {
+        pageTitle: "FUGA STAY 四條大宮 入住指南",
+        tocTitle: "目錄",
+        hero: {
+          kicker: "House Manual",
+          title: "FUGA STAY 四條大宮",
+          subtitle: "京都四條大宮入住指南",
+          note: "抵達後請先確認本頁基本資訊。這裡整理了入住期間常用的聯絡方式、設施說明與住宿規則。"
+        },
+        quick: [
+          ["入住", "15:00"],
+          ["退房", "11:00"],
+          ["櫃台", "075-841-4771"],
+          ["LINE", "@816hhjqx"]
+        ],
+        footer: "FUGA STAY 四條大宮 | 感謝您的入住。",
+        sections: [
+          {
+            id: "welcome",
+            title: "Welcome",
+            label: "歡迎",
+            lead: "歡迎入住 FUGA STAY 四條大宮。本頁彙整了入住期間最常用的資訊。",
+            cards: [
+              ["地址", "京都市下京區岩上通四條下る佐竹町396番地"],
+              ["交通", "位於大宮站周邊，前往京都市內觀光與移動都很方便。"]
+            ],
+            image: "wide",
+            images: ["assets/images/hero-lobby.jpg"]
+          },
+          {
+            id: "contact",
+            title: "Contact",
+            label: "聯絡",
+            lead: "入住期間如有問題，請聯絡櫃台或透過 LINE 留言。",
+            cards: [
+              ["電話", "075-841-4771"],
+              ["LINE", "@816hhjqx"],
+              ["建議", "非緊急事項建議使用 LINE，方便工作人員確認內容並回覆。"]
+            ]
+          },
+          {
+            id: "wifi",
+            title: "Wi-Fi",
+            label: "網路",
+            lead: "Wi-Fi 資訊請查看房內 QR 碼。不同房間的 SSID 與密碼可能不同。",
+            cards: [
+              ["連線方式", "掃描房內 Wi-Fi QR 碼，並依照畫面指示連線。"],
+              ["無法連線時", "請先關閉並重新開啟手機或電腦的 Wi-Fi，再嘗試連線；仍無法使用請聯絡櫃台。"]
+            ]
+          },
+          {
+            id: "checkout",
+            title: "Check-out",
+            label: "退房",
+            lead: "退房時間為 11:00 前。鑰匙請放回櫃台的鑰匙回收箱。",
+            cards: [
+              ["時間", "請在 11:00 前離開房間。"],
+              ["鑰匙歸還", "請投入櫃台設置的鑰匙回收箱。"],
+              ["延遲退房", "依當日房況而定，延遲退房為 2,000 日圓 / 小時。"],
+              ["鑰匙遺失", "鑰匙遺失需收取 3,000 日圓。"]
+            ],
+            note: "如需延遲退房，請務必提前聯絡櫃台確認。"
+          },
+          {
+            id: "facilities",
+            title: "Facilities",
+            label: "館內設施",
+            lead: "1 樓大廳設有微波爐與製冰機。屬於共用設施，請互相禮讓使用。",
+            cards: [
+              ["1 樓大廳", "可使用微波爐與製冰機。"],
+              ["房內設備", "房內配有電熱水壺、吹風機、衣架等。"]
+            ],
+            image: "row",
+            images: ["assets/images/kettle-amenities.jpg", "assets/images/closet-hangers.jpg"]
+          },
+          {
+            id: "no-smoking",
+            title: "No Smoking",
+            label: "禁菸",
+            lead: "全館、客房、陽台、入口周邊均禁止吸菸，電子菸也請勿使用。",
+            cards: [
+              ["禁菸區域", "客房內、公共區域、陽台、入口周邊。"],
+              ["特別清掃費", "如確認有吸菸行為，將收取特別清掃費 30,000 日圓。"]
+            ],
+            image: "wide",
+            images: ["assets/images/brand-sign-night.jpg"]
+          },
+          {
+            id: "delivery-visitors",
+            title: "Food Delivery & Visitors",
+            label: "外送與訪客",
+            lead: "外送請在大廳或入口處領取。非入住客人請勿進入客房樓層。",
+            cards: [
+              ["外送", "請在大廳或入口處與配送員交接。"],
+              ["訪客", "基於安全及對其他住客的考量，請勿讓非入住客人進入客房。"]
+            ]
+          },
+          {
+            id: "luggage",
+            title: "Luggage Storage",
+            label: "行李寄放",
+            lead: "當日行李寄放從 9:00 後開始受理。如需寄放，請聯絡櫃台。",
+            cards: [
+              ["開始時間", "9:00 後"],
+              ["注意事項", "貴重物品、易碎物品、冷藏冷凍物品無法寄放。"]
+            ]
+          },
+          {
+            id: "cleaning",
+            title: "Long-stay Cleaning",
+            label: "連住清掃",
+            lead: "入住 3 晚以上時，可提前申請清掃服務。",
+            cards: [
+              ["對象", "入住 3 晚以上的客人"],
+              ["申請期限", "請在希望清掃日前一天 20:00 前聯絡櫃台或 LINE。"],
+              ["請配合", "清掃時間請保持房間可由工作人員進入的狀態。"]
+            ]
+          },
+          {
+            id: "towels-trash",
+            title: "Towels, Amenities & Trash",
+            label: "毛巾、備品與垃圾",
+            lead: "如需更換毛巾或回收垃圾，請在 11:00 前依指定方式放在房門外。",
+            cards: [
+              ["毛巾更換", "請將更換卡和已使用毛巾在 11:00 前放在房門外。"],
+              ["垃圾回收", "請將垃圾裝袋後在 11:00 前放在房門外。"],
+              ["備品追加", "如需追加備品，請聯絡櫃台或 LINE。"]
+            ],
+            image: "row",
+            images: ["assets/images/bathroom.jpg", "assets/images/hair-dryer.jpg"]
+          },
+          {
+            id: "rental",
+            title: "Rental Items",
+            label: "租借用品",
+            lead: "租借用品數量有限。如有需要，請聯絡櫃台或 LINE。",
+            cards: [
+              ["申請", "請透過櫃台或 LINE 諮詢。"],
+              ["歸還", "請在退房前歸還至櫃台。"]
+            ]
+          },
+          {
+            id: "devices",
+            title: "Devices",
+            label: "設備使用",
+            lead: "以下為房內與館內設備的基本使用方法。如不確定如何操作，請聯絡櫃台。",
+            devices: [
+              ["Wi-Fi", "請掃描房內 QR 碼查看 SSID 與密碼。無法連線時，請重新啟動設備 Wi-Fi 後再試。"],
+              ["冷暖氣", "使用遙控器開機，並選擇冷氣、暖氣或除濕。外出時請協助節電。"],
+              ["電視", "使用遙控器開機。請將音量控制在不影響其他房間的範圍內。"],
+              ["浴室備品", "請使用房內配備的浴室備品。如需追加，請聯絡櫃台或 LINE。"],
+              ["微波爐 / 製冰機", "位於 1 樓大廳。請避免長時間占用，並保持清潔。"]
+            ],
+            image: "row",
+            images: ["assets/images/air-conditioner.jpg", "assets/images/standard-twin.jpg"]
+          },
+          {
+            id: "emergency",
+            title: "Emergency",
+            label: "緊急情況",
+            lead: "發生火災、急病、事件等緊急情況時，請先確保自身安全，並聯絡公共緊急電話。",
+            cards: [
+              ["火災、急救", "119"],
+              ["警察", "110"],
+              ["酒店", "075-841-4771 / LINE @816hhjqx"],
+              ["避難", "請依照館內標示和工作人員指引，冷靜避難。"]
+            ]
+          }
+        ]
+      },
+      "en": {
+        pageTitle: "FUGA STAY Shijo Omiya House Manual",
+        tocTitle: "Contents",
+        hero: {
+          kicker: "House Manual",
+          title: "FUGA STAY Shijo Omiya",
+          subtitle: "A guide for your stay in Kyoto Shijo Omiya",
+          note: "Please review the essentials after arrival. This guide covers contacts, facilities, and house rules for a comfortable stay."
+        },
+        quick: [
+          ["Check-in", "15:00"],
+          ["Check-out", "11:00"],
+          ["Front", "075-841-4771"],
+          ["LINE", "@816hhjqx"]
+        ],
+        footer: "FUGA STAY Shijo Omiya | Thank you for staying with us.",
+        sections: [
+          {
+            id: "welcome",
+            title: "Welcome",
+            label: "Guide",
+            lead: "Welcome to FUGA STAY Shijo Omiya. This page gathers the key information you may need during your stay.",
+            cards: [
+              ["Address", "396 Satakecho, Iwagamidori Shijo-sagaru, Shimogyo-ku, Kyoto"],
+              ["Area", "Located near Omiya Station, convenient for sightseeing and moving around Kyoto."]
+            ],
+            image: "wide",
+            images: ["assets/images/hero-lobby.jpg"]
+          },
+          {
+            id: "contact",
+            title: "Contact",
+            label: "Support",
+            lead: "If you need assistance during your stay, please contact the front desk or send us a message on LINE.",
+            cards: [
+              ["Phone", "075-841-4771"],
+              ["LINE", "@816hhjqx"],
+              ["Note", "For non-urgent requests, LINE is recommended so our staff can confirm the details and reply clearly."]
+            ]
+          },
+          {
+            id: "wifi",
+            title: "Wi-Fi",
+            label: "Internet",
+            lead: "Please check the QR code in your room for Wi-Fi information. SSID and password may vary by room.",
+            cards: [
+              ["How to connect", "Scan the in-room Wi-Fi QR code and follow the instructions on your device."],
+              ["If it does not connect", "Turn Wi-Fi off and on again on your device, then try reconnecting. If the issue continues, contact the front desk."]
+            ]
+          },
+          {
+            id: "checkout",
+            title: "Check-out",
+            label: "Departure",
+            lead: "Check-out is by 11:00. Please return the key to the collection box at the front desk.",
+            cards: [
+              ["Time", "Please leave your room by 11:00."],
+              ["Key return", "Place the key in the collection box at the front desk."],
+              ["Late check-out", "Subject to availability. The fee is 2,000 yen per hour."],
+              ["Lost key", "A lost key fee of 3,000 yen will apply."]
+            ],
+            note: "Please contact the front desk in advance if you wish to request a late check-out."
+          },
+          {
+            id: "facilities",
+            title: "Facilities",
+            label: "Inside the hotel",
+            lead: "A microwave and ice machine are available in the 1F lobby. Please share these facilities with other guests.",
+            cards: [
+              ["1F lobby", "Microwave and ice machine are available."],
+              ["In-room items", "Electric kettle, hair dryer, hangers, and other basic items are provided in the room."]
+            ],
+            image: "row",
+            images: ["assets/images/kettle-amenities.jpg", "assets/images/closet-hangers.jpg"]
+          },
+          {
+            id: "no-smoking",
+            title: "No Smoking",
+            label: "Policy",
+            lead: "Smoking is not permitted inside the building, in guest rooms, on balconies, or around the entrance. This includes electronic cigarettes.",
+            cards: [
+              ["Non-smoking areas", "Guest rooms, shared areas, balconies, and the entrance area."],
+              ["Special cleaning fee", "If smoking is confirmed, a special cleaning fee of 30,000 yen will be charged."]
+            ],
+            image: "wide",
+            images: ["assets/images/brand-sign-night.jpg"]
+          },
+          {
+            id: "delivery-visitors",
+            title: "Food Delivery & Visitors",
+            label: "Access",
+            lead: "Please receive food deliveries in the lobby or at the entrance. Visitors who are not staying at the hotel should not enter guest room floors.",
+            cards: [
+              ["Food delivery", "Please meet delivery staff in the lobby or at the entrance."],
+              ["Visitors", "For security and consideration of other guests, non-staying visitors are not permitted in guest rooms."]
+            ]
+          },
+          {
+            id: "luggage",
+            title: "Luggage Storage",
+            label: "Baggage",
+            lead: "Same-day luggage storage is available from 9:00. Please ask the front desk if you need this service.",
+            cards: [
+              ["Start time", "From 9:00"],
+              ["Items not accepted", "Valuables, fragile items, refrigerated items, and frozen items cannot be stored."]
+            ]
+          },
+          {
+            id: "cleaning",
+            title: "Long-stay Cleaning",
+            label: "Housekeeping",
+            lead: "For stays of 3 nights or more, cleaning can be arranged upon advance request.",
+            cards: [
+              ["Eligible stays", "Stays of 3 nights or more"],
+              ["Request deadline", "Please contact the front desk or LINE by 20:00 on the day before your preferred cleaning date."],
+              ["Request", "Please make sure staff can enter the room during the scheduled cleaning time."]
+            ]
+          },
+          {
+            id: "towels-trash",
+            title: "Towels, Amenities & Trash",
+            label: "Daily needs",
+            lead: "For towel replacement or trash collection, please place the items outside your room by 11:00.",
+            cards: [
+              ["Towel replacement", "Place the replacement card and used towels outside your room by 11:00."],
+              ["Trash collection", "Tie trash in a bag and place it outside your room by 11:00."],
+              ["Amenities", "If you need additional amenities, please contact the front desk or LINE."]
+            ],
+            image: "row",
+            images: ["assets/images/bathroom.jpg", "assets/images/hair-dryer.jpg"]
+          },
+          {
+            id: "rental",
+            title: "Rental Items",
+            label: "Borrowing",
+            lead: "Rental items are limited in number. Please ask the front desk or contact us on LINE if needed.",
+            cards: [
+              ["Request", "Please ask the front desk or contact us on LINE."],
+              ["Return", "Please return rental items to the front desk before check-out."]
+            ]
+          },
+          {
+            id: "devices",
+            title: "Devices",
+            label: "How to use",
+            lead: "Below are basic instructions for room and shared facilities. If you are unsure, please contact the front desk.",
+            devices: [
+              ["Wi-Fi", "Scan the in-room QR code to check the SSID and password. If connection fails, restart Wi-Fi on your device and try again."],
+              ["Air conditioner", "Use the remote control to turn it on and select cooling, heating, or dehumidifying. Please save energy when leaving the room."],
+              ["TV", "Use the remote control to turn it on. Please keep the volume at a level that does not disturb nearby rooms."],
+              ["Bathroom amenities", "Please use the amenities provided in the room. Contact the front desk or LINE if you need additional items."],
+              ["Microwave / Ice machine", "Available in the 1F lobby. Please avoid long use and keep the area clean."]
+            ],
+            image: "row",
+            images: ["assets/images/air-conditioner.jpg", "assets/images/standard-twin.jpg"]
+          },
+          {
+            id: "emergency",
+            title: "Emergency",
+            label: "Safety",
+            lead: "In case of fire, sudden illness, or an incident, first ensure your safety and contact the public emergency service.",
+            cards: [
+              ["Fire / Ambulance", "119"],
+              ["Police", "110"],
+              ["Hotel", "075-841-4771 / LINE @816hhjqx"],
+              ["Evacuation", "Follow the signs inside the building and staff instructions calmly."]
+            ]
+          }
+        ]
+      },
+      "ko": {
+        pageTitle: "FUGA STAY 시조 오미야 이용 안내",
+        tocTitle: "목차",
+        hero: {
+          kicker: "House Manual",
+          title: "FUGA STAY 시조 오미야",
+          subtitle: "교토 시조 오미야 숙박 안내",
+          note: "도착 후 기본 정보를 먼저 확인해 주세요. 연락처, 시설 이용 방법, 숙박 규칙을 한곳에 정리했습니다."
+        },
+        quick: [
+          ["체크인", "15:00"],
+          ["체크아웃", "11:00"],
+          ["프런트", "075-841-4771"],
+          ["LINE", "@816hhjqx"]
+        ],
+        footer: "FUGA STAY 시조 오미야 | 이용해 주셔서 감사합니다.",
+        sections: [
+          {
+            id: "welcome",
+            title: "Welcome",
+            label: "안내",
+            lead: "FUGA STAY 시조 오미야에 오신 것을 환영합니다. 숙박 중 필요한 기본 정보를 이 페이지에 정리했습니다.",
+            cards: [
+              ["주소", "교토시 시모교구 이와가미도리 시조사가루 사타케초 396"],
+              ["위치", "오미야역 주변에 있어 교토 시내 관광과 이동에 편리합니다."]
+            ],
+            image: "wide",
+            images: ["assets/images/hero-lobby.jpg"]
+          },
+          {
+            id: "contact",
+            title: "Contact",
+            label: "연락",
+            lead: "숙박 중 문의 사항이 있으면 프런트 또는 LINE으로 연락해 주세요.",
+            cards: [
+              ["전화", "075-841-4771"],
+              ["LINE", "@816hhjqx"],
+              ["안내", "긴급하지 않은 문의는 내용 확인이 쉬운 LINE 이용을 권장합니다."]
+            ]
+          },
+          {
+            id: "wifi",
+            title: "Wi-Fi",
+            label: "인터넷",
+            lead: "Wi-Fi 정보는 객실 내 QR 코드를 확인해 주세요. 객실에 따라 SSID와 비밀번호가 다를 수 있습니다.",
+            cards: [
+              ["연결 방법", "객실 내 Wi-Fi QR 코드를 스캔하고 화면 안내에 따라 연결해 주세요."],
+              ["연결이 안 될 때", "기기의 Wi-Fi를 껐다가 다시 켠 후 재연결해 주세요. 계속 문제가 있으면 프런트로 연락해 주세요."]
+            ]
+          },
+          {
+            id: "checkout",
+            title: "Check-out",
+            label: "체크아웃",
+            lead: "체크아웃은 11:00까지입니다. 열쇠는 프런트의 반납함에 넣어 주세요.",
+            cards: [
+              ["시간", "11:00까지 객실에서 퇴실해 주세요."],
+              ["열쇠 반납", "프런트에 있는 열쇠 반납함에 넣어 주세요."],
+              ["레이트 체크아웃", "당일 객실 상황에 따라 가능하며 요금은 1시간 2,000엔입니다."],
+              ["열쇠 분실", "열쇠 분실 시 3,000엔이 청구됩니다."]
+            ],
+            note: "레이트 체크아웃을 원하시는 경우 반드시 사전에 프런트에 문의해 주세요."
+          },
+          {
+            id: "facilities",
+            title: "Facilities",
+            label: "시설",
+            lead: "1층 로비에 전자레인지와 제빙기가 있습니다. 공용 시설이므로 다른 고객을 배려해 이용해 주세요.",
+            cards: [
+              ["1층 로비", "전자레인지와 제빙기를 이용하실 수 있습니다."],
+              ["객실 내 비품", "전기 주전자, 헤어드라이어, 옷걸이 등이 준비되어 있습니다."]
+            ],
+            image: "row",
+            images: ["assets/images/kettle-amenities.jpg", "assets/images/closet-hangers.jpg"]
+          },
+          {
+            id: "no-smoking",
+            title: "No Smoking",
+            label: "금연",
+            lead: "건물 내부, 객실, 발코니, 입구 주변은 모두 금연입니다. 전자담배도 사용할 수 없습니다.",
+            cards: [
+              ["금연 구역", "객실, 공용부, 발코니, 입구 주변."],
+              ["특별 청소비", "흡연이 확인될 경우 특별 청소비 30,000엔이 청구됩니다."]
+            ],
+            image: "wide",
+            images: ["assets/images/brand-sign-night.jpg"]
+          },
+          {
+            id: "delivery-visitors",
+            title: "Food Delivery & Visitors",
+            label: "배달 및 방문객",
+            lead: "음식 배달은 로비 또는 입구에서 받아 주세요. 투숙객이 아닌 분은 객실층 출입을 삼가 주세요.",
+            cards: [
+              ["음식 배달", "배달원과의 수령은 로비 또는 입구에서 부탁드립니다."],
+              ["방문객", "보안과 다른 고객을 위해 투숙객 외 객실 입실은 삼가 주세요."]
+            ]
+          },
+          {
+            id: "luggage",
+            title: "Luggage Storage",
+            label: "짐 보관",
+            lead: "당일 짐 보관은 9:00 이후부터 가능합니다. 필요하신 경우 프런트에 문의해 주세요.",
+            cards: [
+              ["시작 시간", "9:00 이후"],
+              ["주의", "귀중품, 파손되기 쉬운 물품, 냉장 및 냉동 물품은 보관할 수 없습니다."]
+            ]
+          },
+          {
+            id: "cleaning",
+            title: "Long-stay Cleaning",
+            label: "연박 청소",
+            lead: "3박 이상 숙박 시 사전 요청으로 청소를 신청하실 수 있습니다.",
+            cards: [
+              ["대상", "3박 이상 숙박"],
+              ["신청 기한", "청소 희망일 전날 20:00까지 프런트 또는 LINE으로 연락해 주세요."],
+              ["요청 사항", "청소 시간에는 직원이 객실에 들어갈 수 있도록 해 주세요."]
+            ]
+          },
+          {
+            id: "towels-trash",
+            title: "Towels, Amenities & Trash",
+            label: "수건, 어메니티, 쓰레기",
+            lead: "수건 교환이나 쓰레기 수거가 필요한 경우 11:00까지 지정된 방법으로 객실 문 밖에 내놓아 주세요.",
+            cards: [
+              ["수건 교환", "교환 카드와 사용한 수건을 11:00까지 객실 문 밖에 놓아 주세요."],
+              ["쓰레기 수거", "쓰레기는 봉투에 묶어 11:00까지 객실 문 밖에 놓아 주세요."],
+              ["어메니티", "추가 어메니티가 필요한 경우 프런트 또는 LINE으로 연락해 주세요."]
+            ],
+            image: "row",
+            images: ["assets/images/bathroom.jpg", "assets/images/hair-dryer.jpg"]
+          },
+          {
+            id: "rental",
+            title: "Rental Items",
+            label: "대여 물품",
+            lead: "대여 물품은 수량이 한정되어 있습니다. 필요하신 경우 프런트 또는 LINE으로 문의해 주세요.",
+            cards: [
+              ["신청", "프런트 또는 LINE으로 문의해 주세요."],
+              ["반납", "체크아웃 전에 프런트로 반납해 주세요."]
+            ]
+          },
+          {
+            id: "devices",
+            title: "Devices",
+            label: "기기 사용법",
+            lead: "객실 및 공용 시설의 기본 사용 방법입니다. 조작이 어려우면 프런트로 연락해 주세요.",
+            devices: [
+              ["Wi-Fi", "객실 내 QR 코드를 스캔해 SSID와 비밀번호를 확인해 주세요. 연결되지 않으면 기기의 Wi-Fi를 다시 시작해 주세요."],
+              ["에어컨", "리모컨으로 전원을 켜고 냉방, 난방 또는 제습을 선택해 주세요. 외출 시 절전에 협조해 주세요."],
+              ["TV", "리모컨으로 전원을 켜 주세요. 주변 객실에 방해가 되지 않도록 음량을 조절해 주세요."],
+              ["욕실 어메니티", "객실에 준비된 욕실 어메니티를 이용해 주세요. 추가가 필요하면 프런트 또는 LINE으로 연락해 주세요."],
+              ["전자레인지 / 제빙기", "1층 로비에 있습니다. 장시간 사용은 피하고 깨끗하게 이용해 주세요."]
+            ],
+            image: "row",
+            images: ["assets/images/air-conditioner.jpg", "assets/images/standard-twin.jpg"]
+          },
+          {
+            id: "emergency",
+            title: "Emergency",
+            label: "긴급 상황",
+            lead: "화재, 급병, 사건 등 긴급 상황에서는 먼저 안전을 확보하고 공공 긴급 연락처로 연락해 주세요.",
+            cards: [
+              ["화재 및 구급", "119"],
+              ["경찰", "110"],
+              ["호텔", "075-841-4771 / LINE @816hhjqx"],
+              ["대피", "건물 내 표시와 직원 안내에 따라 침착하게 대피해 주세요."]
+            ]
+          }
+        ]
+      }
+    };
+
+    const allSectionIds = copy[fallbackLang].sections.map((section) => section.id);
+
+    function sectionNumber(index) {
+      return String(index + 1).padStart(2, "0");
+    }
+
+    function renderText(lang) {
+      const langCopy = copy[lang];
+      document.documentElement.lang = lang;
+      document.title = langCopy.pageTitle;
+
+      document.querySelectorAll("[data-text]").forEach((node) => {
+        const path = node.dataset.text.split(".");
+        const value = path.reduce((target, key) => target && target[key], langCopy);
+        node.textContent = value || "";
+      });
+
+      document.querySelectorAll(".lang-button").forEach((button) => {
+        const isActive = button.dataset.lang === lang;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+    }
+
+    function renderQuickInfo(lang) {
+      const quickInfo = document.getElementById("quick-info");
+      quickInfo.innerHTML = "";
+      copy[lang].quick.forEach(([label, value]) => {
+        const item = document.createElement("div");
+        item.className = "quick-item";
+        item.innerHTML = `<span class="quick-label">${label}</span><span class="quick-value">${value}</span>`;
+        quickInfo.appendChild(item);
+      });
+    }
+
+    function displayTitle(section, lang) {
+      return lang === "en" ? section.title : section.label;
+    }
+
+    function displayEyebrow(section, lang) {
+      return lang === "en" ? section.label : section.title;
+    }
+
+    function renderToc(lang) {
+      const toc = document.getElementById("toc");
+      toc.innerHTML = "";
+      copy[lang].sections.forEach((section, index) => {
+        const link = document.createElement("a");
+        link.href = `#${section.id}`;
+        link.dataset.target = section.id;
+        link.innerHTML = `<span class="toc-index">${sectionNumber(index)}</span><span>${displayTitle(section, lang)}</span>`;
+        toc.appendChild(link);
+      });
+    }
+
+    function renderCards(cards) {
+      if (!cards) return "";
+      return `
+        <div class="info-grid">
+          ${cards.map(([label, text]) => `
+            <div class="info-card">
+              <strong>${label}</strong>
+              <span>${text}</span>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function renderImages(section) {
+      if (!section.images || !section.image) return "";
+      if (section.image === "wide") {
+        return `<div class="wide-image"><img src="${section.images[0]}" alt="${section.title}"></div>`;
+      }
+      return `
+        <div class="image-row">
+          ${section.images.map((src) => `<img src="${src}" alt="${section.title}">`).join("")}
+        </div>
+      `;
+    }
+
+    function renderDevices(devices) {
+      if (!devices) return "";
+      return `
+        <div class="device-list">
+          ${devices.map(([title, text]) => `
+            <details>
+              <summary>${title}</summary>
+              <div class="device-content"><p>${text}</p></div>
+            </details>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function renderSections(lang) {
+      const content = document.getElementById("content");
+      content.innerHTML = "";
+      copy[lang].sections.forEach((section, index) => {
+        const article = document.createElement("article");
+        article.className = "section";
+        article.id = section.id;
+        article.innerHTML = `
+          <div class="section-head">
+            <div class="section-number">${sectionNumber(index)}</div>
+            <div>
+              <p class="eyebrow">${displayEyebrow(section, lang)}</p>
+              <h2>${displayTitle(section, lang)}</h2>
+            </div>
+          </div>
+          <div class="section-body">
+            <p class="lead">${section.lead}</p>
+            ${renderCards(section.cards)}
+            ${renderDevices(section.devices)}
+            ${section.note ? `<p class="note">${section.note}</p>` : ""}
+            ${renderImages(section)}
+          </div>
+        `;
+        content.appendChild(article);
+      });
+    }
+
+    function setActiveToc() {
+      const offsets = allSectionIds
+        .map((id) => document.getElementById(id))
+        .filter(Boolean)
+        .map((section) => ({ id: section.id, top: section.getBoundingClientRect().top }));
+
+      let activeId = offsets[0] ? offsets[0].id : allSectionIds[0];
+      offsets.forEach((item) => {
+        if (item.top <= 120) activeId = item.id;
+      });
+
+      document.querySelectorAll(".toc a").forEach((link) => {
+        link.classList.toggle("is-active", link.dataset.target === activeId);
+      });
+    }
+
+    function setLanguage(lang) {
+      const nextLang = copy[lang] ? lang : fallbackLang;
+      renderText(nextLang);
+      renderQuickInfo(nextLang);
+      renderToc(nextLang);
+      renderSections(nextLang);
+      localStorage.setItem("fugastay-house-manual-lang", nextLang);
+      window.requestAnimationFrame(setActiveToc);
+    }
+
+    document.querySelectorAll(".lang-button").forEach((button) => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+
+    window.addEventListener("scroll", setActiveToc, { passive: true });
+    window.addEventListener("resize", setActiveToc);
+
+    const savedLang = localStorage.getItem("fugastay-house-manual-lang");
+    setLanguage(savedLang || fallbackLang);
+  </script>
+</body>
+</html>
