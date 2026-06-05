@@ -633,6 +633,7 @@
       .section {
         padding: 36px 0;
         scroll-margin-top: 12px;
+        background: var(--paper);
       }
 
       .section:first-child {
@@ -669,8 +670,13 @@
       }
 
       .info-card {
+        background: var(--white);
         min-height: auto;
         padding: 15px 16px;
+      }
+
+      details {
+        background: var(--white);
       }
 
       .info-card strong {
@@ -704,6 +710,11 @@
 
       .wide-image img {
         aspect-ratio: 4 / 3;
+      }
+
+      .section .image-row,
+      .section .wide-image {
+        display: none;
       }
 
       .footer {
